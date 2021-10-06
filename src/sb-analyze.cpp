@@ -80,14 +80,14 @@ Superball::Superball(int argc, char **argv)
   }
 }
 
-void analyze(Superball *s,DisjointSetByRankWPC *djs,int y,int x);
+void analyze(Superball *s,Disjoint_Set *djs,int y,int x);
 
 int main(int argc, char **argv)
 {
   Superball *s;
   s = new Superball(argc, argv);
-  DisjointSetByRankWPC *djs;
-  djs = new DisjointSetByRankWPC(s->board.size());
+  Disjoint_Set *djs;
+  djs = new Disjoint_Set(s->board.size());
   for(int i = 0; i< s->r; i++) {
     for(int j = 0; j< s->c; j++) {
       if (s->goals[i*s->c+j] == 1 && djs->Find(i*s->c+j) == i*s->c+j)
@@ -98,7 +98,7 @@ int main(int argc, char **argv)
 
 }
 
-void analyze(Superball *s,DisjointSetByRankWPC *djs,int y,int x) {
+void analyze(Superball *s,Disjoint_Set *djs,int y,int x) {
   
   if(y!=0 && djs->Find(y*(s->c-1)+x) != djs->Find(y*s->c+x) && s->board[y*(s->c-1)+x] == s->board[y*s->c+x]) {
     djs->Union(djs->Find(y*s->c+x),djs->Find(y*(s->c-1)+x));

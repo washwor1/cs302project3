@@ -100,19 +100,19 @@ int main(int argc, char **argv)
 void analyze(Superball *s,DisjointSetByRankWPC *djs,int y,int x) {
   
   if(y!=0 && djs->Find(y*(s->c-1)+x) != djs->Find(y*s->c+x) && s->board[y*(s->c-1)+x] == s->board[y*s->c+x]) {
-    djs->Union(y*s->c+x,y*(s->c-1)+x);
+    djs->Union(djs->Find(y*s->c+x),djs->Find(y*(s->c-1)+x));
     analyze(s,djs,y-1,x);
   }
   if(x!=0 && djs->Find(y*(s->c)+x-1) != djs->Find(y*s->c+x) && s->board[y*(s->c)+x-1] == s->board[y*s->c+x]) {
-    djs->Union(y*s->c+x,y*(s->c)+x-1);
+    djs->Union(djs->Find(y*s->c+x),djs->Find(y*(s->c)+x-1));
     analyze(s,djs,y,x-1);
   }
   if(y!=s->r-1 && djs->Find(y*(s->c+1)+x) != djs->Find(y*s->c+x) && s->board[y*(s->c+1)+x] == s->board[y*s->c+x]) {
-    djs->Union(y*s->c+x,y*(s->c+1)+x);
+    djs->Union(djs->Find(y*s->c+x),djs->Find(y*(s->c+1)+x));
     analyze(s,djs,y+1,x);
   }
   if(x!=s->c-1 && djs->Find(y*(s->c)+x+1) != djs->Find(y*s->c+x) && s->board[y*(s->c)+x+1] == s->board[y*s->c+x]) {
-    djs->Union(y*s->c+x,y*(s->c)+x+1);
+    djs->Union(djs->Find(y*s->c+x),djs->Find(y*(s->c)+x+1));
     analyze(s,djs,y,x+1);
   }
   return;

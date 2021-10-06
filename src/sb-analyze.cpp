@@ -95,7 +95,12 @@ int main(int argc, char **argv)
         analyze(s,djs,i,j);
     }
   }
-  djs->Print();
+  vector<int> *sizes = djs->Get_Sizes();
+  for (unsigned int i = 0; i < sizes->size(); i++) {
+    if (sizes->at(i) >4 ) {
+      cout << sizes->at(i) << "\n"
+    }
+  }
 
 }
 

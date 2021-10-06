@@ -81,7 +81,7 @@ Superball::Superball(int argc, char **argv)
 
 void analyze(Superball *s,DisjointSetByRankWPC *djs,int y,int x);
 
-main(int argc, char **argv)
+int main(int argc, char **argv)
 {
   Superball *s;
   s = new Superball(argc, argv);

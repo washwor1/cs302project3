@@ -87,7 +87,8 @@ int main(int argc, char **argv)
   Superball *s;
   s = new Superball(argc, argv);
   Disjoint_Set *djs;
-  djs = new Disjoint_Set(s->board.size());
+  djs = new Disjoint_Set();
+  djs.Initialize(s->board.size());
   for(int i = 0; i< s->r; i++) {
     for(int j = 0; j< s->c; j++) {
       if (s->goals[i*s->c+j] == 1 && djs->Find(i*s->c+j) == i*s->c+j)
